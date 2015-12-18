@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Andreas Kleiber]]></title>
-  <link href="http://andreaskleiber.de/atom.xml" rel="self"/>
+  <title><![CDATA[Category: Osx | Andreas Kleiber]]></title>
+  <link href="http://andreaskleiber.de/blog/categories/osx/atom.xml" rel="self"/>
   <link href="http://andreaskleiber.de/"/>
   <updated>2015-12-18T01:07:22+01:00</updated>
   <id>http://andreaskleiber.de/</id>
@@ -40,20 +40,15 @@ To make your docker-machine VM mount your data folder on startup you can either 
 
 <p>Assuming your Docker VM is named <code>default</code>.</p>
 
-<p>Add a shared folder to you VM - replace the <code>/path/to/git/repositories/</code></p>
+<p>Add a shared folder to you VM - replace the <code>/path/to/git/repositories/</code>
+<code>
+docker-machine stop default
+VBoxManage sharedfolder add "default" --name "data" --hostpath "/path/to/git/repositories/" --automount
+VBoxManage setextradata "default" VBoxInternal2/SharedFoldersEnableSymlinksCreate/data 1
+docker-machine start default
+</code></p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>docker-machine stop default
-</span><span class='line'>VBoxManage sharedfolder add "default" --name "data" --hostpath "/path/to/git/repositories/" --automount
-</span><span class='line'>VBoxManage setextradata "default" VBoxInternal2/SharedFoldersEnableSymlinksCreate/data 1
-</span><span class='line'>docker-machine start default</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Mount folder in VM on startup</p>
-
+<p>Mount folder in VM on startup
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
@@ -61,23 +56,24 @@ To make your docker-machine VM mount your data folder on startup you can either 
 <span class='line-number'>5</span>
 <span class='line-number'>6</span>
 <span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
 </pre></td><td class='code'><pre><code class=''><span class='line'>docker-machine ssh default \
-</span><span class='line'>"echo -e '\
-</span><span class='line'>#!/bin/sh\n\
-</span><span class='line'>\n\
+</span><span class='line'>&ldquo;echo -e &lsquo;\&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;h1&gt;!/bin/sh\n\&lt;/h1&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;\n\
 </span><span class='line'>mkdir -p /home/docker/data\n\
 </span><span class='line'>mount -t vboxsf -o uid=1000,gid=50 data /home/docker/data\
-</span><span class='line'>' | sudo tee -a /var/lib/boot2docker/bootlocal.sh"</span></code></pre></td></tr></table></div></figure>
+</span><span class='line'>&lsquo; | sudo tee -a /var/lib/boot2docker/bootlocal.sh"</span></code></pre></td></tr></table></div></figure></p>
 
+<p>Run a Docker container and mount a volume
+<code>
+docker run -d -v /home/docker/data/your-project:/opt/www/your-project -it --name nginx nginx
+</code></p>
 
-<p>Run a Docker container and mount a volume</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>docker run -d -v /home/docker/data/your-project:/opt/www/your-project -it --name nginx nginx</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Et voilà you have access to your project folder</p>
-
+<p>Et voilà you have access to your project folder
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
@@ -90,15 +86,14 @@ To make your docker-machine VM mount your data folder on startup you can either 
 <span class='line-number'>10</span>
 </pre></td><td class='code'><pre><code class=''><span class='line'>/path/to/git/repositories/&gt; ll
 </span><span class='line'>total 0
-</span><span class='line'>-rw-r--r--  1 user  group     0B 18 Dez 00:34 index.html
+</span><span class='line'>-rw-r&ndash;r&ndash;  1 user  group     0B 18 Dez 00:34 index.html&lt;/p&gt;
 </span><span class='line'>
-</span><span class='line'>/path/to/git/repositories/&gt; docker exec -it nginx bash
+</span><span class='line'>&lt;p&gt;/path/to/git/repositories/&gt; docker exec -it nginx bash
 </span><span class='line'>root@710706efa911:/# ls -lah /opt/www/your-project/
 </span><span class='line'>total 4.0K
 </span><span class='line'>drwxr-xr-x 1 1000 staff  102 Dec 17 23:34 .
 </span><span class='line'>drwxr-xr-x 3 root root  4.0K Dec 17 23:33 ..
-</span><span class='line'>-rw-r--r-- 1 1000 staff    0 Dec 17 23:34 index.html</span></code></pre></td></tr></table></div></figure>
-
+</span><span class='line'>-rw-r&ndash;r&ndash; 1 1000 staff    0 Dec 17 23:34 index.html</span></code></pre></td></tr></table></div></figure></p>
 ]]></content>
   </entry>
   
