@@ -2,12 +2,12 @@
 #      Main Configs       #
 # ----------------------- #
 
-url: http://akleiber.github.io
-title: My Octopress Blog
-subtitle: A blogging framework for hackers.
-author: Your Name
+url: http://andreaskleiber.de
+title: Andreas Kleiber
+subtitle: personal blog
+author: Andreas Kleiber
 simple_search: https://www.google.com/search
-description:
+description: I want to share my personal experience and research from my day to day hacking.
 
 # Default date format is "ordinal" (resulting in "July 22nd 2007")
 # You can customize the format as defined in
