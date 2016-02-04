@@ -9,7 +9,7 @@
   <meta name="author" content="Andreas Kleiber">
 
   
-  <meta name="description" content="&hellip; or how to access your local git repositories in a Docker container with docker-machine? What Docker does by default When using Docker on OS &hellip;">
+  <meta name="description" content="The challenge You can link your YouTrack projects to GitHub projects. When you have setup the VCS integration successful you can edit Youtrack issues &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -65,6 +65,74 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2016/02/04/youtrack-github-integration/">Youtrack GitHub Integration</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2016-02-04T13:42:40+01:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>4</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>1:42 pm</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2>The challenge</h2>
+
+<p>You can link your YouTrack projects to GitHub projects. When you have setup the VCS integration successful you can edit Youtrack issues via GIT commits.
+When I tried it some time ago with my personal account it just worked out of the box. But when I started using an organization account things stopped working. After overcoming all obstacles I got it working. My frustration level reached a maximum when I tried to monitor only the master branch. It just again did not work as described in JetBrains documentation.
+I am so glad YouTrack&rsquo;s support team is fast as hell, as far as I can tell.</p>
+
+<p>So in order to make your life easier I will show you the neccessary steps to setup GitHub integration in YouTrack using an organization account and monitoring specific branches.</p>
+
+<h2>The way</h2>
+
+<p>We assume you have setup YouTrack and GitHub accounts.</p>
+
+<h3>Setup VCS integration in your YouTrack Project</h3>
+
+<p><img src="../images/2016-02-04-youtrack-github-integration/vcs-setup.webp" title="YouTrack VCS setup" ></p>
+
+<ol>
+<li>Navigate to your YouTrack project <code>project - edit project - VCS</code></li>
+<li>Add a new GitHub VCS integration</li>
+<li>Create an auth token (just press the link)</li>
+<li>Repository owner = your organization account name</li>
+</ol>
+
+
+<p><img src="../images/2016-02-04-youtrack-github-integration/branch-setup.webp" title="YouTrack VCS branch settings" ></p>
+
+<ol>
+<li>Choose the desired repository</li>
+<li>To only log commits from the master, use <code>+:refs/heads/(master)</code> for &ldquo;Monitor Branches&rdquo;</li>
+<li>When you are finished, YouTrack changes the VCS Login from your organization&rsquo;s name to the account name that owns the OAuth token</li>
+</ol>
+
+
+<h3>Edit YouTrack issues via GIT commits</h3>
+
+<p>You can put every command that you can use via the YouTrack command dialog (ctrl + option + J on OSX) in your GIT commits.
+Just make sure your commit email matches your YouTrack account email.</p>
+
+<p><img src="../images/2016-02-04-youtrack-github-integration/issue.webp" title="YouTrack VCS issue" >
+<img src="../images/2016-02-04-youtrack-github-integration/commit.webp" title="YouTrack VCS commit" ></p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -188,6 +256,10 @@ To make your docker-machine VM mount your data folder on startup you can either 
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2016/02/04/youtrack-github-integration/">Youtrack GitHub Integration</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2015/12/18/mount-any-os-x-host-dir-in-a-docker-container/">Mount Any OS X Host Dir in a Docker Container</a>
       </li>
     
@@ -204,7 +276,7 @@ To make your docker-machine VM mount your data folder on startup you can either 
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2015 - Andreas Kleiber -
+  Copyright &copy; 2016 - Andreas Kleiber -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 

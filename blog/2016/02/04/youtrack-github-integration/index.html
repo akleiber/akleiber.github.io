@@ -1,0 +1,230 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Youtrack GitHub Integration - Andreas Kleiber</title>
+  <meta name="author" content="Andreas Kleiber">
+
+  
+  <meta name="description" content="The challenge You can link your YouTrack projects to GitHub projects. When you have setup the VCS integration successful you can edit Youtrack issues &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://andreaskleiber.de/blog/2016/02/04/youtrack-github-integration/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Andreas Kleiber" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="/javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Andreas Kleiber</a></h1>
+  
+    <h2>personal blog</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="https://www.google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="sitesearch" value="andreaskleiber.de">
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Youtrack GitHub Integration</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2016-02-04T13:42:40+01:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>4</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>1:42 pm</span></time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><h2>The challenge</h2>
+
+<p>You can link your YouTrack projects to GitHub projects. When you have setup the VCS integration successful you can edit Youtrack issues via GIT commits.
+When I tried it some time ago with my personal account it just worked out of the box. But when I started using an organization account things stopped working. After overcoming all obstacles I got it working. My frustration level reached a maximum when I tried to monitor only the master branch. It just again did not work as described in JetBrains documentation.
+I am so glad YouTrack&rsquo;s support team is fast as hell, as far as I can tell.</p>
+
+<p>So in order to make your life easier I will show you the neccessary steps to setup GitHub integration in YouTrack using an organization account and monitoring specific branches.</p>
+
+<h2>The way</h2>
+
+<p>We assume you have setup YouTrack and GitHub accounts.</p>
+
+<h3>Setup VCS integration in your YouTrack Project</h3>
+
+<p><img src="../images/2016-02-04-youtrack-github-integration/vcs-setup.webp" title="YouTrack VCS setup" ></p>
+
+<ol>
+<li>Navigate to your YouTrack project <code>project - edit project - VCS</code></li>
+<li>Add a new GitHub VCS integration</li>
+<li>Create an auth token (just press the link)</li>
+<li>Repository owner = your organization account name</li>
+</ol>
+
+
+<p><img src="../images/2016-02-04-youtrack-github-integration/branch-setup.webp" title="YouTrack VCS branch settings" ></p>
+
+<ol>
+<li>Choose the desired repository</li>
+<li>To only log commits from the master, use <code>+:refs/heads/(master)</code> for &ldquo;Monitor Branches&rdquo;</li>
+<li>When you are finished, YouTrack changes the VCS Login from your organization&rsquo;s name to the account name that owns the OAuth token</li>
+</ol>
+
+
+<h3>Edit YouTrack issues via GIT commits</h3>
+
+<p>You can put every command that you can use via the YouTrack command dialog (ctrl + option + J on OSX) in your GIT commits.
+Just make sure your commit email matches your YouTrack account email.</p>
+
+<p><img src="../images/2016-02-04-youtrack-github-integration/issue.webp" title="YouTrack VCS issue" >
+<img src="../images/2016-02-04-youtrack-github-integration/commit.webp" title="YouTrack VCS commit" ></p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Andreas Kleiber</span></span>
+
+      
+
+
+
+
+<time class='entry-date' datetime='2016-02-04T13:42:40+01:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>4</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>1:42 pm</span></time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/git/'>git</a>, <a class='category' href='/blog/categories/github/'>github</a>, <a class='category' href='/blog/categories/jetbrains/'>jetbrains</a>, <a class='category' href='/blog/categories/project-management/'>project management</a>, <a class='category' href='/blog/categories/youtrack/'>youtrack</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://andreaskleiber.de/blog/2016/02/04/youtrack-github-integration/" data-via="" data-counturl="http://andreaskleiber.de/blog/2016/02/04/youtrack-github-integration/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2015/12/18/mount-any-os-x-host-dir-in-a-docker-container/" title="Previous Post: Mount any OS X host dir in a Docker container">&laquo; Mount any OS X host dir in a Docker container</a>
+      
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2016/02/04/youtrack-github-integration/">Youtrack GitHub Integration</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/12/18/mount-any-os-x-host-dir-in-a-docker-container/">Mount Any OS X Host Dir in a Docker Container</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2016 - Andreas Kleiber -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>
