@@ -1,0 +1,4 @@
+- https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-request-throttling.html
+- https://www.serverless.com/framework/docs/providers/aws/guide/resources#override-aws-cloudformation-resource
+- https://docs.aws.amazon.com/apigatewayv2/latest/api-reference/apis-apiid-routes-routeid.html
+- https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-apigatewayv2-stage.html#cfn-apigatewayv2-stage-routesettings
