@@ -1,3 +1,4 @@
-baseURL = 'http://example.org/'
-languageCode = 'en-us'
-title = 'My New Hugo Site'
+baseURL = 'https://andreaskleiber.de/'
+languageCode = 'de-de'
+title = 'Andreas Kleiber - Personal Blog'
+theme = 'hugo-theme-cleanwhite'
